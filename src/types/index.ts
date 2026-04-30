@@ -1,0 +1,43 @@
+export type Role = 'admin' | 'driver'
+
+export interface User {
+  id: string
+  first_name: string
+  last_name: string
+  email: string
+  role: Role
+  created_at: string
+  updated_at: string
+  assigned_vehicles?: Vehicle[]
+}
+
+export type VehicleStatus = 'available' | 'assigned' | 'maintenance'
+
+export interface Vehicle {
+  id: string
+  license_plate: string
+  brand: string
+  model: string
+  year: number
+  color?: string
+  fuel_type?: string
+  status: VehicleStatus
+  mileage?: number
+  notes?: string
+  assigned_to_id?: string
+  assigned_to?: User
+  assigned_at?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface AuthResponse {
+  token: string
+  user: User
+}
+
+export interface ApiEnvelope<T> {
+  success: boolean
+  data?: T
+  error?: string
+}

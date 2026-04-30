@@ -1,0 +1,79 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --bg: #09090b;
+  --bg2: #111113;
+  --bg3: #18181b;
+  --bg4: #27272a;
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+
+  --accent: #6366f1;
+  --accent-h: #818cf8;
+  --accent-glow: rgba(99,102,241,0.25);
+  --green: #22c55e;
+  --green-bg: rgba(34,197,94,0.12);
+  --red: #f87171;
+  --red-bg: rgba(248,113,113,0.12);
+  --yellow: #fbbf24;
+  --yellow-bg: rgba(251,191,36,0.12);
+  --blue: #38bdf8;
+  --blue-bg: rgba(56,189,248,0.12);
+
+  --text: #fafafa;
+  --text-2: #a1a1aa;
+  --text-3: #52525b;
+
+  --r: 8px;
+  --r-lg: 14px;
+  --r-sm: 5px;
+  --shadow: 0 0 0 1px var(--border), 0 8px 32px rgba(0,0,0,0.5);
+
+  --nav-h: 60px;
+  --sidebar-w: 220px;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+}
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font-family: inherit; }
+button { cursor: pointer; border: none; background: none; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 99px; }
+
+/* Shared utility classes */
+.card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 2px 9px; border-radius: 99px;
+  font-size: .7rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+}
+.badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.badge-available { background: var(--green-bg); color: var(--green); }
+.badge-assigned   { background: var(--blue-bg);  color: var(--blue);  }
+.badge-maintenance{ background: var(--yellow-bg); color: var(--yellow);}
+.badge-admin  { background: var(--accent-glow); color: var(--accent-h); }
+.badge-driver { background: var(--bg4); color: var(--text-2); }
+
+.spinner {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: #fff;
+  animation: spin .6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.page-fade { animation: fade-up .3s var(--ease); }
+@keyframes fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
