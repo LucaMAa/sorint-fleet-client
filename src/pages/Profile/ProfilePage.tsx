@@ -42,7 +42,7 @@ export function ProfilePage() {
             <div className="profile-avatar">{initials}</div>
             <div className="profile-name">{user?.first_name} {user?.last_name}</div>
             <div className="profile-email">{user?.email}</div>
-            <div className="profile-badge-wrap"><Badge status={user?.role ?? 'driver'} /></div>
+            <div className="profile-badge-wrap"><Badge status={user?.role ?? 'user'} /></div>
           </div>
 
           {user?.assigned_vehicles && user.assigned_vehicles.length > 0 && (

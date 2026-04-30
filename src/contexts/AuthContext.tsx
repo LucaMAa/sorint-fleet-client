@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
 import type { User } from '../types'
+import { logout as apiLogout } from '../api/client'
+
 
 interface AuthCtx {
   user: User | null
@@ -23,11 +25,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setToken(t); setUser(u)
   }, [])
 
-  const logout = useCallback(() => {
-    localStorage.removeItem('fleet_token')
-    localStorage.removeItem('fleet_user')
-    setToken(null); setUser(null)
-  }, [])
+  const logout = () => {
+    apiLogout()
+  }
 
   return (
     <Ctx.Provider value={{ user, token, login, logout, isAdmin: user?.role === 'admin' }}>

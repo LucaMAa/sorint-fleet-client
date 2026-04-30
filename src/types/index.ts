@@ -1,4 +1,4 @@
-export type Role = 'admin' | 'driver'
+export type Role = 'admin' | 'user'
 
 export interface User {
   id: string
@@ -33,6 +33,7 @@ export interface Vehicle {
 
 export interface AuthResponse {
   token: string
+  refresh_token: string
   user: User
 }
 
@@ -40,4 +41,38 @@ export interface ApiEnvelope<T> {
   success: boolean
   data?: T
   error?: string
+}
+
+export interface CreateVehicleDto {
+  license_plate: string
+  brand: string
+  model: string
+  year: number
+  color?: string
+  fuel_type?: string
+  mileage?: number
+  notes?: string
+}
+
+export interface UpdateVehicleDto {
+  license_plate?: string
+  brand?: string
+  model?: string
+  year?: number
+  color?: string
+  fuel_type?: string
+  mileage?: number
+  notes?: string
+}
+
+
+export interface Brand {
+  ID: number
+  Name: string
+}
+
+export interface Model {
+  ID: number
+  Name: string
+  BrandID: number
 }

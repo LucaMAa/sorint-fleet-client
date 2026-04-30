@@ -25,6 +25,7 @@ export function LoginPage() {
         mode === 'login' ? { email: form.email, password: form.password } : form
       )
       login(res.token, res.user)
+      localStorage.setItem('fleet_refresh', res.refresh_token)
       navigate('/dashboard')
     } catch (e) {
       setError((e as Error).message)

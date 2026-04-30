@@ -9,7 +9,7 @@ export function UsersPage() {
   const users: User[] = (data as any)?.users ?? []
 
   const [editU, setEditU] = useState<User | null>(null)
-  const [role, setRole] = useState<'admin' | 'driver'>('driver')
+  const [role, setRole] = useState<'admin' | 'user'>('user')
   const [search, setSearch] = useState('')
 
   const filtered = users.filter(u => {
@@ -61,7 +61,7 @@ export function UsersPage() {
         <Modal title={`Modifica Ruolo — ${editU.first_name} ${editU.last_name}`} onClose={() => setEditU(null)}
           footer={<><Btn variant="ghost" onClick={() => setEditU(null)}>Annulla</Btn><Btn onClick={saveRole}>Salva</Btn></>}>
           <Select label="Ruolo" value={role} onChange={e => setRole(e.target.value as any)}>
-            <option value="driver">Driver</option>
+            <option value="user">User</option>
             <option value="admin">Admin</option>
           </Select>
         </Modal>

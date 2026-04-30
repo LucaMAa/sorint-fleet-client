@@ -7,6 +7,7 @@ import { VehicleForm } from './VehicleForm'
 import { AssignModal } from './AssignModal'
 import type { Vehicle } from '../../types'
 import './vehicles.css'
+import { VehicleImport } from './VehicleImport'
 
 export function VehiclesPage() {
   const { isAdmin } = useAuth()
@@ -49,6 +50,12 @@ export function VehiclesPage() {
         <div><h1>Veicoli</h1><p>{vehicles.length} veicoli nella flotta</p></div>
         {isAdmin && <Btn onClick={() => setShowForm(true)}>＋ Nuovo</Btn>}
       </div>
+
+      {isAdmin && (
+        <div style={{ marginBottom: 16 }}>
+          <VehicleImport />
+        </div>
+      )}
 
       <div className="filter-bar">
         <input placeholder="Cerca targa, brand, modello..." value={search} onChange={e => setSearch(e.target.value)} />

@@ -88,10 +88,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 export const useToast = () => { const c = useContext(ToastCtx); return { success: (m: string) => c?.add(m,'success'), error: (m: string) => c?.add(m,'error'), info: (m: string) => c?.add(m,'info') } }
 
 // ---- BADGE ----
-const VALID = ['available','assigned','maintenance','admin','driver']
+const VALID = ['available','assigned','maintenance','admin','user']
 export function Badge({ status }: { status: string }) {
-  const s = VALID.includes(status) ? status : 'driver'
-  const labels: Record<string, string> = { available: 'Disponibile', assigned: 'Assegnato', maintenance: 'Manutenzione', admin: 'Admin', driver: 'Driver' }
+  const s = VALID.includes(status) ? status : 'user'
+  const labels: Record<string, string> = { available: 'Disponibile', assigned: 'Assegnato', maintenance: 'Manutenzione', admin: 'Admin', user: 'user' }
   return <span className={`badge badge-${s}`}>{labels[s] ?? status}</span>
 }
 

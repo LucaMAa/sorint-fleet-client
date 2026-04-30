@@ -59,13 +59,15 @@ export function AppLayout({ children }: { children: ReactNode }) {
         </nav>
 
         <div className="sidebar-footer">
-          <NavLink to="/profile" className="user-row" onClick={close}>
-            <div className="avatar">{initials}</div>
-            <div className="user-info">
-              <div className="user-name">{user?.first_name} {user?.last_name}</div>
-              <div className="user-role-txt">{user?.role}</div>
-            </div>
-          </NavLink>
+          {isAdmin && (
+            <NavLink to="/profile" className="user-row" onClick={close}>
+              <div className="avatar">{initials}</div>
+              <div className="user-info">
+                <div className="user-name">{user?.first_name} {user?.last_name}</div>
+                <div className="user-role-txt">{user?.role}</div>
+              </div>
+            </NavLink>
+          )}
           <button className="logout-btn" title="Logout" onClick={() => { logout(); navigate('/login') }} style={{ marginLeft: 'auto', marginTop: 4, display: 'flex' }}>
             ⎋
           </button>
