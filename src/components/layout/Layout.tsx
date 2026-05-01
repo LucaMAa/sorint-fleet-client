@@ -4,10 +4,11 @@ import { useAuth } from '../../contexts/AuthContext'
 import './Layout.css'
 
 const NAV = [
-  { to: '/dashboard', icon: '⊞', label: 'Dashboard' },
-  { to: '/vehicles',  icon: '🚗', label: 'Veicoli' },
+  
 ]
 const ADMIN_NAV = [
+  { to: '/dashboard', icon: '⊞', label: 'Dashboard' },
+  { to: '/vehicles',  icon: '🚗', label: 'Veicoli' },
   { to: '/users', icon: '👥', label: 'Utenti' },
 ]
 
@@ -32,7 +33,6 @@ export function AppLayout({ children }: { children: ReactNode }) {
   return (
     <div className="layout">
       <div className={`overlay ${open ? 'open' : ''}`} onClick={close} />
-
       <aside className={`sidebar ${open ? 'open' : ''}`}>
         <div className="sidebar-logo">
           <div className="logo-icon">🚐</div>
@@ -40,26 +40,40 @@ export function AppLayout({ children }: { children: ReactNode }) {
         </div>
 
         <nav className="sidebar-nav">
-          <div className="nav-section">Menu</div>
-          {NAV.map(n => (
-            <NavLink key={n.to} to={n.to} onClick={close}
-              className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-              <span className="nav-icon">{n.icon}</span>{n.label}
-            </NavLink>
-          ))}
-          {isAdmin && <>
-            <div className="nav-section" style={{ marginTop: 8 }}>Admin</div>
+        <div className="nav-section">Menu</div>
+        {NAV.map(n => (
+          <NavLink
+            key={n.to}
+            to={n.to}
+            onClick={close}
+            className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+          >
+            <span className="nav-icon">{n.icon}</span>
+            {n.label}
+          </NavLink>
+        ))}
+        {isAdmin && (
+          <>
+            <div className="nav-section" style={{ marginTop: 8 }}>
+              Admin
+            </div>
+
             {ADMIN_NAV.map(n => (
-              <NavLink key={n.to} to={n.to} onClick={close}
-                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-                <span className="nav-icon">{n.icon}</span>{n.label}
+              <NavLink
+                key={n.to}
+                to={n.to}
+                onClick={close}
+                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+              >
+                <span className="nav-icon">{n.icon}</span>
+                {n.label}
               </NavLink>
             ))}
-          </>}
-        </nav>
+          </>
+        )}
+      </nav>
 
-        <div className="sidebar-footer">
-          {isAdmin && (
+      <div className="sidebar-footer">
             <NavLink to="/profile" className="user-row" onClick={close}>
               <div className="avatar">{initials}</div>
               <div className="user-info">
@@ -67,7 +81,6 @@ export function AppLayout({ children }: { children: ReactNode }) {
                 <div className="user-role-txt">{user?.role}</div>
               </div>
             </NavLink>
-          )}
           <button className="logout-btn" title="Logout" onClick={() => { logout(); navigate('/login') }} style={{ marginLeft: 'auto', marginTop: 4, display: 'flex' }}>
             ⎋
           </button>
