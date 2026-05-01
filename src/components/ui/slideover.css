@@ -1,0 +1,102 @@
+.slideover-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6); backdrop-filter: blur(4px);
+  z-index: 150; animation: fade-in .2s var(--ease);
+}
+.slideover {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(480px, 100vw);
+  background: var(--bg2); border-left: 1px solid var(--border);
+  z-index: 151; display: flex; flex-direction: column;
+  animation: slide-in .25s var(--ease);
+  box-shadow: -24px 0 80px rgba(0,0,0,.5);
+}
+@keyframes slide-in { from { transform: translateX(100%); } }
+
+.so-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.so-icon {
+  width: 44px; height: 44px; border-radius: var(--r);
+  background: var(--accent-glow); border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.so-titles { flex: 1; min-width: 0; }
+.so-title { font-size: 1rem; font-weight: 700; margin-bottom: 3px; }
+.so-sub { font-size: .8rem; color: var(--text-3);
+  font-family: var(--font-mono); }
+.so-close {
+  width: 30px; height: 30px; border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-3); font-size: .85rem; transition: all .15s; flex-shrink: 0;
+}
+.so-close:hover { background: var(--bg4); color: var(--text); }
+
+.so-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+
+/* Meta grid */
+.so-meta {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 24px;
+}
+.so-meta-item {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 10px 12px;
+}
+.so-meta-label { font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+.so-meta-value { font-size: .875rem; font-weight: 600; }
+
+/* Timeline */
+.so-section-title {
+  font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--text-3);
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.so-section-title span {
+  background: var(--bg4); color: var(--text-2);
+  padding: 1px 7px; border-radius: 99px; font-size: .7rem;
+}
+
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-item { display: flex; gap: 14px; }
+.tl-line { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.tl-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  margin-top: 4px;
+}
+.tl-dot.active { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.tl-dot.closed { background: var(--bg4); border: 2px solid var(--border-2); }
+.tl-connector { width: 1px; flex: 1; background: var(--border); margin: 4px 0; min-height: 16px; }
+.tl-content { padding-bottom: 20px; flex: 1; min-width: 0; }
+.tl-name { font-size: .875rem; font-weight: 600; margin-bottom: 3px; }
+.tl-name a { color: var(--accent-h); }
+.tl-dates { font-size: .75rem; color: var(--text-3); font-family: var(--font-mono); margin-bottom: 4px; }
+.tl-duration {
+  display: inline-block; font-size: .7rem; font-weight: 600;
+  padding: 1px 8px; border-radius: 99px;
+  background: var(--bg4); color: var(--text-2);
+}
+.tl-active-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: .7rem; font-weight: 600; color: var(--green);
+  background: var(--green-bg); padding: 1px 8px; border-radius: 99px;
+}
+.tl-active-badge::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--green); }
+
+.tl-empty {
+  text-align: center; padding: 32px 0; color: var(--text-3); font-size: .875rem;
+}
+
+/* current assignment banner */
+.current-banner {
+  background: var(--green-bg); border: 1px solid rgba(34,197,94,.2);
+  border-radius: var(--r); padding: 12px 14px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.current-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); flex-shrink: 0; }
+.current-text { flex: 1; }
+.current-who { font-size: .875rem; font-weight: 600; color: var(--green); }
+.current-since { font-size: .75rem; color: var(--text-3); margin-top: 1px; }

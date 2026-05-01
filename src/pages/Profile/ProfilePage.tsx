@@ -15,7 +15,6 @@ export function ProfilePage() {
 
   const saveProfile = async (e: FormEvent) => {
     e.preventDefault(); setMsg(''); setErr('')
-    // API non esiste per editare profilo, ma struttura pronta
     setMsg('Profilo aggiornato (funzionalità non ancora disponibile via API)')
   }
 
@@ -36,7 +35,6 @@ export function ProfilePage() {
       {err && <Alert type="error">{err}</Alert>}
 
       <div className="profile-grid">
-        {/* Sidebar info */}
         <div>
           <div className="profile-card" style={{ marginBottom: 14 }}>
             <div className="profile-avatar">{initials}</div>
@@ -58,7 +56,6 @@ export function ProfilePage() {
           )}
         </div>
 
-        {/* Forms */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div className="form-section">
             <h2>Informazioni Personali</h2>

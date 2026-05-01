@@ -35,7 +35,6 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
   const set = (k: string, v: string | number) =>
     setForm(p => ({ ...p, [k]: v }))
 
-  // 📦 BRANDS
   useEffect(() => {
     api
       .get<Brand[]>('/vehicle-meta/brands')
@@ -43,7 +42,6 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
       .catch(() => setBrands([]))
   }, [])
 
-  // 📦 MODELS
   useEffect(() => {
     if (!form.brand) {
       setModels([])
@@ -58,7 +56,6 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
       .catch(() => setModels([]))
   }, [form.brand])
 
-  // 🧠 PATCH BUILDER
   const buildPatchPayload = (): UpdateVehicleDto => {
     if (!vehicle) return form
 
@@ -137,18 +134,13 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
     >
       <form id="vf" onSubmit={submit}>
         <Alert type="error">{error}</Alert>
-
         <div className="form-grid">
-
-          {/* TARGA */}
           <Input
             label="Targa *"
             value={form.license_plate}
             onChange={e => set('license_plate', e.target.value)}
             required
           />
-
-          {/* BRAND */}
           <>
             <Input
               label="Brand *"
@@ -167,8 +159,6 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
               ))}
             </datalist>
           </>
-
-          {/* MODELLO */}
           <>
             <Input
               label="Modello *"
@@ -186,8 +176,6 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
               </datalist>
             )}
           </>
-
-          {/* ANNO */}
           <Input
             label="Anno *"
             type="number"
@@ -199,15 +187,11 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
             }
             required
           />
-
-          {/* COLORE */}
           <Input
             label="Colore"
             value={form.color}
             onChange={e => set('color', e.target.value)}
           />
-
-          {/* CARBURANTE */}
           <Select
             label="Carburante"
             value={form.fuel_type}
@@ -218,8 +202,6 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
             <option value="electric">Elettrico</option>
             <option value="hybrid">Ibrido</option>
           </Select>
-
-          {/* KM */}
           <Input
             label="Km"
             type="number"
@@ -229,8 +211,6 @@ export function VehicleForm({ vehicle, onClose, onSaved }: Props) {
               set('mileage', e.target.value === '' ? '' : +e.target.value)
             }
           />
-
-          {/* NOTE */}
           <Input
             label="Note"
             value={form.notes}

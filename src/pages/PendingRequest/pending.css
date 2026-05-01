@@ -1,0 +1,55 @@
+.pending-live-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 12px; border-radius: 99px;
+  background: var(--green-bg); color: var(--green);
+  border: 1px solid rgba(34,197,94,.25);
+  font-size: .75rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .6; transform: scale(.85); }
+}
+
+.pending-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.pending-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 16px 20px;
+  transition: border-color .15s;
+  animation: fade-up .25s var(--ease);
+}
+.pending-card:hover { border-color: var(--border-2); }
+
+.pending-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent-glow); border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 700; color: var(--accent-h);
+  flex-shrink: 0; text-transform: uppercase;
+}
+
+.pending-info { flex: 1; min-width: 0; }
+.pending-name { font-size: .95rem; font-weight: 700; margin-bottom: 3px; }
+.pending-email {
+  font-size: .8rem; color: var(--text-2);
+  font-family: var(--font-mono); margin-bottom: 4px;
+}
+.pending-date { font-size: .75rem; color: var(--text-3); }
+
+.pending-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+@media (max-width: 600px) {
+  .pending-card { flex-wrap: wrap; }
+  .pending-actions { width: 100%; justify-content: flex-end; }
+}

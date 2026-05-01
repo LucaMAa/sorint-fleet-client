@@ -6,6 +6,8 @@ export interface User {
   last_name: string
   email: string
   role: Role
+  status: 'pending' | 'approved' | 'rejected'
+  must_change_password: boolean
   created_at: string
   updated_at: string
   assigned_vehicles?: Vehicle[]
@@ -35,6 +37,7 @@ export interface AuthResponse {
   token: string
   refresh_token: string
   user: User
+  must_change_password: boolean
 }
 
 export interface ApiEnvelope<T> {
@@ -65,7 +68,6 @@ export interface UpdateVehicleDto {
   notes?: string
 }
 
-
 export interface Brand {
   ID: number
   Name: string
@@ -75,4 +77,17 @@ export interface Model {
   ID: number
   Name: string
   BrandID: number
+}
+
+export interface VehicleAssignment {
+  id: string
+  vehicle_id: string
+  user_id: string
+  started_at: string
+  ended_at?: string | null
+  notes?: string
+  vehicle?: Vehicle
+  user?: User
+  created_at: string
+  updated_at: string
 }

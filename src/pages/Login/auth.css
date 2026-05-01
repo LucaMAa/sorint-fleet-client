@@ -29,3 +29,33 @@
 .auth-footer { text-align: center; margin-top: 18px; font-size: .85rem; color: var(--text-3); }
 .auth-footer button { color: var(--accent-h); font-weight: 600; background: none; border: none; cursor: pointer; }
 .auth-footer button:hover { text-decoration: underline; }
+.reg-popup-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.8); backdrop-filter: blur(8px);
+  z-index: 300; display: flex; align-items: center; justify-content: center;
+  padding: 24px; animation: fade-in .2s var(--ease);
+}
+
+.reg-popup {
+  background: var(--bg3); border: 1px solid var(--border-2);
+  border-radius: var(--r-lg); padding: 40px 36px;
+  max-width: 420px; width: 100%; text-align: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,.8);
+  animation: modal-in .3s cubic-bezier(.34,1.56,.64,1);
+}
+
+.reg-popup-icon {
+  font-size: 3rem; margin-bottom: 16px;
+  animation: bounce-in .4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes bounce-in { from { transform: scale(0); opacity: 0; } }
+
+.reg-popup-title {
+  font-size: 1.4rem; font-weight: 800; margin-bottom: 12px;
+}
+
+.reg-popup-body {
+  font-size: .9rem; color: var(--text-2); line-height: 1.65;
+  margin-bottom: 24px;
+}
+.reg-popup-body strong { color: var(--text); }

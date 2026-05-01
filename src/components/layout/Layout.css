@@ -83,3 +83,16 @@
   .hamburger { display: flex; }
   .page-wrap { padding: 20px 16px; }
 }
+
+.nav-badge {
+  margin-left: auto;
+  min-width: 18px; height: 18px;
+  border-radius: 99px;
+  background: var(--red);
+  color: #fff;
+  font-size: .65rem; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 5px;
+  animation: pop-in .2s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes pop-in { from { transform: scale(0); } }
