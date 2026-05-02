@@ -1,0 +1,100 @@
+/* ---- STATUS BADGE ---- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: 99px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.status-approved {
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid rgba(34, 197, 94, .25);
+}
+
+.status-pending {
+  background: var(--yellow-bg);
+  color: var(--yellow);
+  border: 1px solid rgba(251, 191, 36, .25);
+}
+
+.status-rejected {
+  background: var(--red-bg);
+  color: var(--red);
+  border: 1px solid rgba(248, 113, 113, .25);
+}
+
+.status-disabled {
+  background: rgba(180, 0, 0, .18);
+  color: #ff4444;
+  border: 1px solid rgba(255, 68, 68, .45);
+  font-weight: 700;
+  animation: disabled-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes disabled-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
+  50%       { box-shadow: 0 0 0 3px rgba(255, 68, 68, .15); }
+}
+
+/* ---- USERS TABLE ROW — disabled highlight ---- */
+.row-disabled td {
+  opacity: .65;
+}
+
+.row-disabled td:first-child {
+  border-left: 3px solid #ff4444;
+  padding-left: 13px;
+}
+
+/* ---- SEARCH BAR ---- */
+.users-search {
+  padding: 8px 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  color: var(--text);
+  font-size: .875rem;
+  outline: none;
+  width: 100%;
+  max-width: 320px;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.users-search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ---- ACTIONS CELL ---- */
+.user-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ---- CONFIRM DIALOG (reuse from vehicles) ---- */
+.confirm-dialog {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.confirm-dialog p {
+  color: var(--text-2);
+  font-size: .9rem;
+  margin: 0;
+}
+
+.confirm-dialog strong {
+  color: var(--text);
+  font-size: 1rem;
+}

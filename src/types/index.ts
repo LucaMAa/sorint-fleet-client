@@ -6,7 +6,7 @@ export interface User {
   last_name: string
   email: string
   role: Role
-  status: 'pending' | 'approved' | 'rejected'
+  status: 'pending' | 'approved' | 'rejected' | 'disabled'
   must_change_password: boolean
   created_at: string
   updated_at: string
