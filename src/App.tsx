@@ -12,6 +12,8 @@ import { UsersPage } from './pages/Users/UsersPage'
 import { PendingRequestsPage } from './pages/PendingRequest/PendingRequestPage'
 import { ProfilePage } from './pages/Profile/ProfilePage'
 import './index.css'
+import { ResetPasswordPage } from './pages/ResetPassword/ResetPasswordPages'
+import { ConfirmEmailPage } from './pages/Profile/ConfirmEmailPage'
 
 function App() {
   return (
@@ -22,6 +24,10 @@ function App() {
             <Routes>
               {/* Public */}
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/reset-password" element={<ResetPasswordPage />} />
+
+              {/* Email confirmation — public, token-based */}
+              <Route path="/confirm-email" element={<ConfirmEmailPage />} />
 
               {/* Cambio password forzato — richiede auth ma non layout */}
               <Route element={<ProtectedRoute />}>
