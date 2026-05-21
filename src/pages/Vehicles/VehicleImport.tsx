@@ -20,7 +20,7 @@ export function VehicleImport({ onImported }: Props) {
     info('Import in corso...')
 
     try {
-      const res = await fetch('/api/v1/vehicles/import', {
+      const res = await fetch('/api/vehicles/import', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('fleet_token')}`,

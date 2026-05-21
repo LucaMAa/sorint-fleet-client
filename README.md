@@ -21,7 +21,7 @@ npm run build
 1. Push su GitHub
 2. Vai su [vercel.com](https://vercel.com) → Import project
 3. Framework: **Vite**
-4. Aggiungi env var: `VITE_API_URL=https://tua-api.com/api/v1`
+4. Aggiungi env var: `VITE_API_URL=https://tua-api.com/api`
 5. Deploy ✓
 
 ## Struttura

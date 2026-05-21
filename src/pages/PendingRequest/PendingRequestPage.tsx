@@ -66,15 +66,10 @@ export function PendingRequestsPage() {
               : `${pending.length} richiest${pending.length === 1 ? 'a' : 'e'} in attesa`}
           </p>
         </div>
-        <div className="pending-live-badge">
-          <span className="live-dot" />
-          Live
-        </div>
       </div>
 
       {pending.length === 0 ? (
         <Empty
-          icon="✅"
           title="Nessuna richiesta in attesa"
           sub="Le nuove richieste appariranno qui in tempo reale"
         />

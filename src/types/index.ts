@@ -31,6 +31,8 @@ export interface Vehicle {
   assigned_at?: string
   created_at: string
   updated_at: string
+  jolly: boolean
+  jolly_duration: number
 }
 
 export interface AuthResponse {
@@ -66,6 +68,8 @@ export interface UpdateVehicleDto {
   fuel_type?: string
   mileage?: number
   notes?: string
+  jolly?: boolean
+  jolly_duration?: number
 }
 
 export interface Brand {

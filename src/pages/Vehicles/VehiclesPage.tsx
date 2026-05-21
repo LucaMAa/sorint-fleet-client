@@ -19,6 +19,25 @@ interface PagedVehicles {
   offset: number
 }
 
+function JollyBadge({ jolly, duration }: { jolly: boolean; duration: number }) {
+  if (!jolly) {
+    return <span style={{ color: 'var(--text-3)', fontSize: '.8rem' }}>—</span>
+  }
+  return (
+    <span style={{
+      display: 'inline-flex', alignItems: 'center', gap: 5,
+      background: 'rgba(99,102,241,0.12)', color: 'var(--accent-h)',
+      border: '1px solid rgba(99,102,241,0.25)',
+      borderRadius: 99, padding: '2px 9px',
+      fontSize: '.7rem', fontWeight: 700, letterSpacing: '.04em', textTransform: 'uppercase',
+      whiteSpace: 'nowrap',
+    }}>
+      <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--accent-h)', flexShrink: 0 }} />
+      Jolly · {duration}g
+    </span>
+  )
+}
+
 export function VehiclesPage() {
   const { isAdmin } = useAuth()
 
@@ -44,7 +63,6 @@ export function VehiclesPage() {
       if (q) params.set('search', q)
       if (status) params.set('status', status)
       const res = await api.get<any>(`/vehicles?${params}`)
-      // normalizza: nuovo formato { items, total } oppure vecchio array
       if (Array.isArray(res)) {
         setData({ items: res, total: res.length, limit: LIMIT, offset: off })
       } else {
@@ -60,7 +78,6 @@ export function VehiclesPage() {
     }
   }, [])
 
-  // debounce della ricerca
   useEffect(() => {
     const t = setTimeout(() => {
       setOffset(0)
@@ -69,7 +86,6 @@ export function VehiclesPage() {
     return () => clearTimeout(t)
   }, [search, statusFilter, fetchVehicles])
 
-  // cambio pagina
   useEffect(() => {
     fetchVehicles(search, statusFilter, offset)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -145,7 +161,11 @@ export function VehiclesPage() {
         </select>
       </div>
 
-      {loading && <div style={{ textAlign: 'center', padding: '20px 0', color: 'var(--text-3)', fontSize: '.85rem' }}>Caricamento...</div>}
+      {loading && (
+        <div style={{ textAlign: 'center', padding: '20px 0', color: 'var(--text-3)', fontSize: '.85rem' }}>
+          Caricamento...
+        </div>
+      )}
 
       {!loading && data.items.length === 0 ? (
         <Empty icon="🚗" title="Nessun veicolo" sub="Aggiungi il primo veicolo alla flotta" />
@@ -160,6 +180,7 @@ export function VehiclesPage() {
                   <th>Anno</th>
                   <th>Km</th>
                   <th>Stato</th>
+                  <th>Jolly</th>
                   {isAdmin && <th>Assegnato a</th>}
                   {isAdmin && <th>Azioni</th>}
                 </tr>
@@ -178,6 +199,7 @@ export function VehiclesPage() {
                       {v.mileage?.toLocaleString() ?? '—'}
                     </td>
                     <td><Badge status={v.status} /></td>
+                    <td><JollyBadge jolly={v.jolly} duration={v.jolly_duration} /></td>
                     {isAdmin && (
                       <td style={{ color: 'var(--text-2)', fontSize: '.85rem' }}>
                         {v.assigned_to ? `${v.assigned_to.first_name} ${v.assigned_to.last_name}` : '—'}

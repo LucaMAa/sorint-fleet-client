@@ -101,6 +101,6 @@ export function PageLoader() {
 }
 
 // ---- EMPTY ----
-export function Empty({ icon = '📭', title = 'Nessun dato', sub = '' }: { icon?: string; title?: string; sub?: string }) {
+export function Empty({ icon = '', title = 'Nessun dato', sub = '' }: { icon?: string; title?: string; sub?: string }) {
   return <div className="empty"><div className="empty-icon">{icon}</div><div className="empty-title">{title}</div>{sub && <div className="empty-sub">{sub}</div>}</div>
 }

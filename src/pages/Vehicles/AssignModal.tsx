@@ -7,8 +7,8 @@ import type { Vehicle, User } from '../../types'
 interface Props { vehicle: Vehicle; onClose: () => void; onSaved: () => void }
 
 export function AssignModal({ vehicle, onClose, onSaved }: Props) {
-  const { data } = useApi<{ users: User[] }>(() => api.get('/users'))
-  const users: User[] = (data as any)?.users ?? []
+  const { data } = useApi<{ users: User[] }>(() => api.get('/users?enabled=true'))
+  const users: User[] = (data as any)?.items ?? (data as any)?.users ?? (Array.isArray(data) ? data : [])
   const [userId, setUserId] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')

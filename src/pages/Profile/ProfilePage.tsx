@@ -185,7 +185,6 @@ export function ProfilePage() {
                 marginBottom: 8,
               }}
             >
-              Zona pericolosa
             </div>
             <p style={{ fontSize: '.8rem', color: 'var(--text-2)', marginBottom: 12, lineHeight: 1.5 }}>
               Disabilitare l'account renderà impossibile l'accesso. Dovrai contattare un amministratore per riabilitarlo.
