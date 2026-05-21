@@ -7,7 +7,7 @@ import { api } from '../../api/client'
 import './profile.css'
 
 export function ProfilePage() {
-  const { user, login, token, logout } = useAuth()
+  const { user, login, logout } = useAuth()
   const { success, error: toastError } = useToast()
   const navigate = useNavigate()
 
@@ -52,8 +52,8 @@ export function ProfilePage() {
     try {
       const updated = await api.patch<typeof user>('/profile', profileForm)
       // Update local auth state so the sidebar/topbar shows new name
-      if (updated && user && token) {
-        login(token, { ...user, ...profileForm })
+      if (updated && user) {
+        login({ ...user, ...profileForm })
       }
       setProfileMsg('Profilo aggiornato con successo')
       success('Profilo aggiornato ✓')

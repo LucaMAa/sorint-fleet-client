@@ -6,7 +6,7 @@ import { Btn, Input, Alert } from '../../components/ui'
 import '../Login/auth.css'
 
 export function ForceChangePasswordPage() {
-  const { user, login, token } = useAuth()
+  const { user, login } = useAuth()
   const navigate = useNavigate()
   const [form, setForm] = useState({ new_password: '', confirm: '' })
   const [loading, setLoading] = useState(false)
@@ -35,8 +35,8 @@ export function ForceChangePasswordPage() {
       })
 
       // aggiorna lo stato utente locale rimuovendo must_change_password
-      if (user && token) {
-        login(token, { ...user, must_change_password: false })
+      if (user) {
+        login({ ...user, must_change_password: false }) 
       }
       navigate('/dashboard', { replace: true })
     } catch (e) {

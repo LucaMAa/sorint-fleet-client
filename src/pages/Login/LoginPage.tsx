@@ -22,11 +22,11 @@ export function LoginPage() {
   const { login } = useAuth()
   const navigate = useNavigate()
 
-  const [mode, setMode]               = useState<Mode>('login')
-  const [loading, setLoading]         = useState(false)
-  const [gLoading, setGLoading]       = useState(false)
-  const [error, setError]             = useState('')
-  const [forgotSent, setForgotSent]   = useState(false)
+  const [mode, setMode]                     = useState<Mode>('login')
+  const [loading, setLoading]               = useState(false)
+  const [gLoading, setGLoading]             = useState(false)
+  const [error, setError]                   = useState('')
+  const [forgotSent, setForgotSent]         = useState(false)
   const [showRegSuccess, setShowRegSuccess] = useState(false)
   const [form, setForm] = useState({ first_name: '', last_name: '', email: '', password: '' })
 
@@ -38,16 +38,22 @@ export function LoginPage() {
     setForgotSent(false)
   }
 
+  const handleAuthResponse = (res: AuthResponse) => {
+    login(res.user)
+    navigate(
+      res.must_change_password || res.user?.must_change_password
+        ? '/change-password'
+        : '/dashboard',
+      { replace: true },
+    )
+  }
+
   const handleGoogleCredential = async (idToken: string) => {
-    setGLoading(true); setError('')
+    setGLoading(true)
+    setError('')
     try {
       const res = await api.post<AuthResponse>('/auth/google', { token: idToken })
-      login(res.token, res.user)
-      navigate(
-        res.must_change_password || res.user?.must_change_password
-          ? '/change-password' : '/dashboard',
-        { replace: true }
-      )
+      handleAuthResponse(res)
     } catch (e) {
       const msg = (e as Error).message
       if (msg === 'account_pending') setShowRegSuccess(true)
@@ -58,7 +64,9 @@ export function LoginPage() {
   }
 
   const submitAuth = async (e: FormEvent) => {
-    e.preventDefault(); setLoading(true); setError('')
+    e.preventDefault()
+    setLoading(true)
+    setError('')
     try {
       if (mode === 'register') {
         await api.post('/auth/register', form)
@@ -69,17 +77,13 @@ export function LoginPage() {
         const res = await api.post<AuthResponse>('/auth/login', {
           email: form.email, password: form.password,
         })
-        login(res.token, res.user)
-        navigate(
-          res.must_change_password || res.user?.must_change_password
-            ? '/change-password' : '/dashboard',
-          { replace: true }
-        )
+        handleAuthResponse(res)
       }
     } catch (e) {
       const msg = (e as Error).message
-      if (msg === 'account_pending') setShowRegSuccess(true)
+      if (msg === 'account_pending')  setShowRegSuccess(true)
       else if (msg === 'account_rejected') setError("Il tuo account è stato rifiutato. Contatta l'amministratore.")
+      else if (msg === 'account_disabled') setError("Il tuo account è stato disabilitato. Contatta l'amministratore.")
       else setError(msg)
     } finally {
       setLoading(false)
@@ -87,7 +91,9 @@ export function LoginPage() {
   }
 
   const submitForgot = async (e: FormEvent) => {
-    e.preventDefault(); setLoading(true); setError('')
+    e.preventDefault()
+    setLoading(true)
+    setError('')
     try {
       await api.post('/auth/request-reset', { email: form.email })
       setForgotSent(true)
@@ -100,9 +106,7 @@ export function LoginPage() {
 
   return (
     <>
-      {showRegSuccess && (
-        <RegistrationSuccessPopup onClose={() => setShowRegSuccess(false)} />
-      )}
+      {showRegSuccess && <RegistrationSuccessPopup onClose={() => setShowRegSuccess(false)} />}
 
       <div className="auth-bg">
         <div className="auth-card">
@@ -121,12 +125,6 @@ export function LoginPage() {
               )}
               <div className="auth-divider">oppure</div>
             </>
-          )}
-
-          {import.meta.env.DEV && mode !== 'forgot' && !GOOGLE_CLIENT_ID && (
-            <div style={{ marginBottom: 16, padding: '8px 12px', background: 'var(--yellow-bg)', borderRadius: 'var(--r-sm)', fontSize: '.75rem', color: 'var(--yellow)' }}>
-              💡 Imposta <code>VITE_GOOGLE_CLIENT_ID</code> nel file <code>.env</code> per abilitare Google OAuth
-            </div>
           )}
 
           {mode !== 'forgot' && (

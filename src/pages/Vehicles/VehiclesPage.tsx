@@ -9,6 +9,7 @@ import './vehicles.css'
 import { VehicleImport } from './VehicleImport'
 import { SlideOver } from '../../components/ui/SlideOver'
 import { AssignmentTimeline } from '../../components/ui/Assignmenttimeline'
+import { DownloadAssignmentPdfButton } from '../../components/ui/DownloadAssignmentPdfButton'
 
 const LIMIT = 10
 
@@ -202,7 +203,19 @@ export function VehiclesPage() {
                     <td><JollyBadge jolly={v.jolly} duration={v.jolly_duration} /></td>
                     {isAdmin && (
                       <td style={{ color: 'var(--text-2)', fontSize: '.85rem' }}>
-                        {v.assigned_to ? `${v.assigned_to.first_name} ${v.assigned_to.last_name}` : '—'}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <span>
+                            {v.assigned_to
+                              ? `${v.assigned_to.first_name} ${v.assigned_to.last_name}`
+                              : '—'}
+                          </span>
+                          {v.status === 'assigned' && (
+                            <DownloadAssignmentPdfButton
+                              vehicleId={v.id}
+                              licensePlate={v.license_plate}
+                            />
+                          )}
+                        </div>
                       </td>
                     )}
                     {isAdmin && (

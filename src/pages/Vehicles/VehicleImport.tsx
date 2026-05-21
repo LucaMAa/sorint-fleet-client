@@ -31,7 +31,7 @@ export function VehicleImport({ onImported }: Props) {
       if (!res.ok) throw new Error('Import fallito')
 
       const json = await res.json()
-      success(`Import completato: ${json.data?.inserted ?? json.inserted ?? 0} veicoli`)
+      success(`Import completato: ${json.data ?? 0} veicoli`)
       setFileName('')
       onImported?.()
     } catch (e) {
