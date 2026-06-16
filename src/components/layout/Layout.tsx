@@ -10,15 +10,21 @@ const NAV: { to: string; icon: string; label: string }[] = []
 const ADMIN_NAV = [
   { to: '/dashboard', icon: '⊞', label: 'Dashboard' },
   { to: '/vehicles', icon: '🚗', label: 'Veicoli' },
+  { to: '/vehicles/ai', icon: '🤖', label: 'AI veicoli' },
   { to: '/users', icon: '👥', label: 'Utenti' },
   { to: '/pending', icon: '🔔', label: 'Richieste' },
+  { to: '/admin/forms', icon: '📝', label: 'Form' },
+  { to: '/admin/form-submissions', icon: '📬', label: 'Richieste cambio veicolo' },
 ]
 
 const TITLES: Record<string, string> = {
   '/dashboard': 'Dashboard',
   '/vehicles': 'Veicoli',
+  '/vehicles/ai': 'Suggerimenti veicoli',
   '/users': 'Utenti',
   '/pending': 'Richieste di Accesso',
+  '/admin/forms': 'Form cambio auto',
+  '/admin/form-submissions': 'Richieste cambio auto',
   '/profile': 'Profilo',
 }
 
@@ -29,7 +35,6 @@ export function AppLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
   const { pendingCount, setPendingCount } = useNotifications()
 
-  // Al mount, carica il conteggio iniziale pending
   useEffect(() => {
     if (!isAdmin) return
     api.get<{ users: unknown[] }>('/users/pending')
@@ -57,6 +62,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
             <NavLink
               key={n.to}
               to={n.to}
+              end
               onClick={close}
               className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
             >
@@ -71,6 +77,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
                 <NavLink
                   key={n.to}
                   to={n.to}
+                  end
                   onClick={close}
                   className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
                 >

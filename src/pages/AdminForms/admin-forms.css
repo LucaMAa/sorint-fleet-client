@@ -1,0 +1,91 @@
+.admin-forms-page .admin-form-main {
+  display: grid;
+  gap: 24px;
+  max-height: calc(100vh - 240px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.admin-forms-page .admin-form-main::-webkit-scrollbar {
+  width: 10px;
+}
+
+.admin-forms-page .admin-form-main::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.03);
+}
+
+.admin-forms-page .admin-form-main::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+}
+
+.admin-forms-page .admin-form-meta {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-forms-page .public-link-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--bg4);
+}
+
+.admin-forms-page .public-link-box code {
+  display: block;
+  padding: 8px 10px;
+  border-radius: var(--r-sm);
+  background: rgba(255,255,255,0.05);
+  font-family: var(--font-mono);
+}
+
+.admin-forms-page .fields-editor {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-forms-page .fields-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-forms-page .field-card {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--bg3);
+}
+
+.admin-forms-page .field-row {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr minmax(120px, auto);
+}
+
+.admin-forms-page .field-remove {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.admin-forms-page .checkbox-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-forms-page .form-help-text {
+  color: var(--text-2);
+  font-size: .9rem;
+}
+
+.admin-forms-page .table td .btn + .btn {
+  margin-left: 10px;
+}

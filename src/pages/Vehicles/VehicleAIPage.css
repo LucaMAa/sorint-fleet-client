@@ -1,0 +1,322 @@
+.vehicle-ai-page {
+  display: grid;
+  gap: 24px;
+  color: var(--text);
+}
+
+.vehicle-ai-page .page-hd {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+.vehicle-ai-page .page-hd h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+}
+
+.vehicle-ai-page .page-hd p {
+  margin: 0;
+  color: var(--text-3);
+  max-width: 740px;
+}
+
+.vehicle-ai-page .wizard-header {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.vehicle-ai-page .step-pill {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  color: var(--text-2);
+  text-align: left;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.vehicle-ai-page .step-pill:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.14);
+}
+
+.vehicle-ai-page .step-pill.active {
+  border-color: rgba(59,130,246,0.85);
+  background: rgba(59,130,246,0.08);
+  color: var(--text);
+}
+
+.vehicle-ai-page .step-pill strong {
+  display: block;
+  font-size: .95rem;
+  color: inherit;
+}
+
+.vehicle-ai-page .step-pill p {
+  margin: 6px 0 0;
+  color: inherit;
+  opacity: .8;
+  font-size: .88rem;
+}
+
+.vehicle-ai-page .step-index {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(59,130,246,0.15);
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.vehicle-ai-page .ai-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.vehicle-ai-page .ai-panel,
+.vehicle-ai-page .results-panel {
+  display: grid;
+  gap: 20px;
+}
+
+.vehicle-ai-page .step-card,
+.vehicle-ai-page .ai-card {
+  background: rgba(18, 22, 32, 0.96);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-lg);
+  padding: 26px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.12);
+}
+
+.vehicle-ai-page .step-card-header {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.vehicle-ai-page .step-label {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.vehicle-ai-page .step-card-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.vehicle-ai-page .step-card-header p {
+  margin: 0;
+  color: var(--text-3);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+.vehicle-ai-page .step-body {
+  display: grid;
+  gap: 18px;
+}
+
+.vehicle-ai-page .step-section {
+  display: grid;
+  gap: 18px;
+}
+
+.vehicle-ai-page .field {
+  display: grid;
+  gap: 12px;
+}
+
+.vehicle-ai-page .field-label {
+  color: rgba(255,255,255,0.8);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.vehicle-ai-page .field-input {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 16px;
+  border-radius: calc(var(--r) * 1.15);
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  resize: vertical;
+  font-size: .95rem;
+  line-height: 1.6;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.vehicle-ai-page .field-input:focus {
+  border-color: rgba(59,130,246,0.95);
+  background: rgba(59,130,246,0.1);
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.16);
+}
+
+.vehicle-ai-page select.field-input {
+  appearance: none;
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.18);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a5b4fc' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+  color: var(--text) !important;
+}
+
+.vehicle-ai-page textarea.field-input {
+  min-height: 140px;
+}
+
+.vehicle-ai-page .condition-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.vehicle-ai-page .checkbox-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-2);
+  padding: 12px 14px;
+  border-radius: var(--r);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.vehicle-ai-page .step-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.vehicle-ai-page .step-actions .btn {
+  min-width: 120px;
+}
+
+.vehicle-ai-page .btn-back {
+  color: var(--text-2);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.vehicle-ai-page .btn-back:hover:not(:disabled) {
+  background: rgba(255,255,255,0.1);
+  color: var(--text);
+}
+
+.vehicle-ai-page .btn-back:disabled {
+  opacity: 0.4;
+}
+
+.vehicle-ai-page .ai-request-summary {
+  background: rgba(255,255,255,0.04);
+  padding: 18px;
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.vehicle-ai-page .ai-request-summary strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: .95rem;
+}
+
+.vehicle-ai-page .recommendation-list {
+  display: grid;
+  gap: 16px;
+}
+
+.vehicle-ai-page .recommendation-card {
+  padding: 22px;
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.vehicle-ai-page .recommendation-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.vehicle-ai-page .recommendation-meta {
+  color: var(--text-3);
+  font-size: .86rem;
+  margin-top: 4px;
+}
+
+.vehicle-ai-page .recommendation-score {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.vehicle-ai-page .recommendation-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.vehicle-ai-page .recommendation-row:last-child {
+  border-bottom: none;
+}
+
+.vehicle-ai-page .recommendation-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.vehicle-ai-page .recommendation-tags span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(99,102,241,0.16);
+  color: var(--accent-h);
+  font-size: .78rem;
+}
+
+@media (min-width: 900px) {
+  .vehicle-ai-page .condition-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .vehicle-ai-page .wizard-header,
+  .vehicle-ai-page .ai-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-ai-page .step-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .vehicle-ai-page .step-actions .btn {
+    width: 100%;
+  }
+}
