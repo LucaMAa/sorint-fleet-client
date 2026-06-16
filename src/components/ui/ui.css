@@ -47,9 +47,17 @@ select.field-input {
 @keyframes fade-in { from { opacity: 0; } }
 .modal-box {
   background: var(--bg3); border: 1px solid var(--border-2);
-  border-radius: var(--r-lg); padding: 28px; width: 100%; max-width: 500px;
+  border-radius: var(--r-lg); padding: 28px; width: 100%; max-width: 700px;
+  max-height: calc(100vh - 64px); overflow-y: auto;
   box-shadow: 0 24px 80px rgba(0,0,0,.7);
   animation: modal-in .2s cubic-bezier(.34,1.56,.64,1);
+}
+.modal-box::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-box::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.12);
+  border-radius: 999px;
 }
 @keyframes modal-in { from { opacity: 0; transform: translateY(16px) scale(.97); } }
 .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }

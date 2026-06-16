@@ -12,6 +12,8 @@ const ADMIN_NAV = [
   { to: '/vehicles', icon: '🚗', label: 'Veicoli' },
   { to: '/users', icon: '👥', label: 'Utenti' },
   { to: '/pending', icon: '🔔', label: 'Richieste' },
+  { to: '/admin/forms', icon: '📝', label: 'Form' },
+  { to: '/admin/form-submissions', icon: '📬', label: 'Richieste' },
 ]
 
 const TITLES: Record<string, string> = {
@@ -19,6 +21,8 @@ const TITLES: Record<string, string> = {
   '/vehicles': 'Veicoli',
   '/users': 'Utenti',
   '/pending': 'Richieste di Accesso',
+  '/admin/forms': 'Form cambio auto',
+  '/admin/form-submissions': 'Richieste cambio auto',
   '/profile': 'Profilo',
 }
 
@@ -29,7 +33,6 @@ export function AppLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
   const { pendingCount, setPendingCount } = useNotifications()
 
-  // Al mount, carica il conteggio iniziale pending
   useEffect(() => {
     if (!isAdmin) return
     api.get<{ users: unknown[] }>('/users/pending')

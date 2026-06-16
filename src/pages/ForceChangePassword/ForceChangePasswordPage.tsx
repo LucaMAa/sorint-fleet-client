@@ -30,11 +30,9 @@ export function ForceChangePasswordPage() {
     try {
       await api.post('/auth/change-password', {
         new_password: form.new_password,
-        // current_password vuoto: il backend lo bypassa se must_change_password=true
         current_password: '',
       })
 
-      // aggiorna lo stato utente locale rimuovendo must_change_password
       if (user) {
         login({ ...user, must_change_password: false }) 
       }

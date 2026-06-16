@@ -11,6 +11,9 @@ import { VehiclesPage } from './pages/Vehicles/VehiclesPage'
 import { UsersPage } from './pages/Users/UsersPage'
 import { PendingRequestsPage } from './pages/PendingRequest/PendingRequestPage'
 import { ProfilePage } from './pages/Profile/ProfilePage'
+import { AdminFormsPage } from './pages/AdminForms/AdminFormsPage'
+import { AdminSubmissionsPage } from './pages/AdminSubmissions/AdminSubmissionsPage'
+import { PublicFormPage } from './pages/PublicForm/PublicFormPage'
 import './index.css'
 import { ResetPasswordPage } from './pages/ResetPassword/ResetPasswordPages'
 import { ConfirmEmailPage } from './pages/Profile/ConfirmEmailPage'
@@ -45,7 +48,11 @@ function App() {
               <Route element={<ProtectedRoute adminOnly />}>
                 <Route path="/users" element={<AppLayout><UsersPage /></AppLayout>} />
                 <Route path="/pending" element={<AppLayout><PendingRequestsPage /></AppLayout>} />
+                <Route path="/admin/forms" element={<AppLayout><AdminFormsPage /></AppLayout>} />
+                <Route path="/admin/form-submissions" element={<AppLayout><AdminSubmissionsPage /></AppLayout>} />
               </Route>
+
+              <Route path="/form/:slug" element={<PublicFormPage />} />
 
               {/* Fallback */}
               <Route path="*" element={<Navigate to="/dashboard" replace />} />

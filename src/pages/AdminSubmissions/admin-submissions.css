@@ -1,0 +1,55 @@
+.admin-submissions-page .table-wrap {
+  margin-top: 16px;
+}
+
+.admin-submissions-page .table td select {
+  width: 100%;
+  min-width: 140px;
+}
+
+.admin-submissions-page .page-hd {
+  margin-bottom: 16px;
+}
+
+.detail-section {
+  display: grid;
+  gap: 18px;
+}
+
+.detail-meta {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+
+.detail-fields {
+  display: grid;
+  gap: 12px;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.detail-key {
+  color: var(--text-3);
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.detail-value {
+  color: var(--text);
+  word-break: break-word;
+}
+
+.detail-template {
+  padding: 12px;
+  border-radius: var(--r-lg);
+  background: var(--bg4);
+}
